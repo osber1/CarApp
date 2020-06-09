@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_marginTop="72dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:clickable="true"
+        android:focusableInTouchMode="true"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/serviceTitle"
+            android:layout_width="match_parent"
+            android:layout_height="90dp"
+            android:text="Remonto darbai"
+            android:textAlignment="center"
+            android:textColor="@android:color/black"
+            android:textSize="36sp"
+            android:textStyle="bold" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/serviceDateText"
+                android:layout_width="150dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="16dp"
+                android:gravity="left"
+                android:padding="8dp"
+                android:text="Data:"
+                android:textSize="20sp" />
+
+            <EditText
+                android:id="@+id/serviceDate"
+                android:layout_width="220dp"
+                android:layout_height="wrap_content"
+                android:clickable="true"
+                android:focusable="false"
+                android:gravity="center"
+                android:hint="@string/chooseDate"
+                android:onClick="setDate"
+                android:padding="8dp" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="70dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/serviceNameText"
+                android:layout_width="150dp"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="16dp"
+                android:gravity="left"
+                android:padding="8dp"
+                android:text="Darbo\npavadinimas:"
+                android:textSize="20sp" />
+
+            <EditText
+                android:id="@+id/serviceName"
+                android:layout_width="220dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:hint="Įveskite darbo pav."
+                android:inputType="textMultiLine"
+                android:padding="8dp" />
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/serviceComText"
+                android:layout_width="150dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="left"
+                android:layout_marginLeft="16dp"
+                android:padding="8dp"
+                android:text="Komentarai:"
+                android:textSize="20sp" />
+
+            <EditText
+                android:id="@+id/serviceCom"
+                android:layout_width="220dp"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:hint="Įveskite komentarus"
+                android:inputType="textMultiLine"
+                android:padding="8dp" />
+        </LinearLayout>
+
+<!--        <TextView-->
+<!--            android:id="@+id/servicePhoto"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_gravity="left"-->
+<!--            android:layout_marginLeft="16dp"-->
+<!--            android:padding="8dp"-->
+<!--            android:text="Nuotraukos:"-->
+<!--            android:textSize="20sp" />-->
+
+    </LinearLayout>
+</ScrollView>

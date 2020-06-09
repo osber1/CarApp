@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">Simple Care</string>
+    <string name="open">open</string>
+    <string name="close">close</string>
+    <string name="validFrom">Galioja nuo:</string>
+    <string name="validTo">Galioja iki:</string>
+    <string name="chooseDate">Pasirinkite datą</string>
+</resources>
