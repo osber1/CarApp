@@ -63,7 +63,7 @@ public class AddNewAuto extends DialogFragment {
         actionOk.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                addNewCar(title1, about1);
+                addNewCar();
                 getDialog().dismiss();
 
                 restartActivity();
@@ -86,16 +86,10 @@ public class AddNewAuto extends DialogFragment {
         getActivity().finish();
     }
 
-    private void addNewCar(String title1, String about1) {
-        if (!title.getText().toString().matches("")) {
+    private void addNewCar() {
+        if (!isEmptyString(title) && !isEmptyString(about)) {
             title1 = title.getText().toString();
-        }
-
-        if (!about.getText().toString().matches("")) {
             about1 = about.getText().toString();
-        }
-
-        if (!title.getText().toString().matches("") && !about.getText().toString().matches("")) {
             databaseHandler.createNewCar(title1, about1);
         } else {
             Toast.makeText(getActivity(), "Neišsaugota. Blogai įvesti duomenys.", Toast.LENGTH_LONG).show();
@@ -105,5 +99,10 @@ public class AddNewAuto extends DialogFragment {
     public void hideKeyboard(View view) {
         InputMethodManager inputMethodManager = (InputMethodManager) getActivity().getSystemService(Activity.INPUT_METHOD_SERVICE);
         inputMethodManager.hideSoftInputFromWindow(view.getWindowToken(), 0);
+    }
+
+    public boolean isEmptyString(EditText toTest) {
+        boolean isEmptyString = toTest.getText().toString().matches("");
+        return isEmptyString;
     }
 }

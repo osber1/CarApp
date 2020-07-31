@@ -78,7 +78,7 @@ public class EditAuto extends DialogFragment {
         actionOk.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(idAuto > 0) {
+                if (idAuto > 0) {
                     updateCarInfo(idAuto);
                     getDialog().dismiss();
                     Intent refresh = new Intent((getContext()), MainActivity.class);
@@ -96,15 +96,9 @@ public class EditAuto extends DialogFragment {
         String title1 = null;
         String about1 = null;
 
-        if (!title.getText().toString().matches("")) {
+        if (!isEmptyString(title) && !!isEmptyString(about)) {
             title1 = title.getText().toString();
-        }
-
-        if (!about.getText().toString().matches("")) {
             about1 = about.getText().toString();
-        }
-
-        if (!title.getText().toString().matches("") && !about.getText().toString().matches("")) {
             databaseHandler.updateCarInfo(title1, about1, id);
         } else {
             Toast.makeText(getActivity(), "Neišsaugota. Blogai įvesti duomenys.", Toast.LENGTH_LONG).show();
@@ -114,5 +108,10 @@ public class EditAuto extends DialogFragment {
     public void hideKeyboard(View view) {
         InputMethodManager inputMethodManager = (InputMethodManager) getActivity().getSystemService(Activity.INPUT_METHOD_SERVICE);
         inputMethodManager.hideSoftInputFromWindow(view.getWindowToken(), 0);
+    }
+
+    public boolean isEmptyString(EditText toTest) {
+        boolean isEmptyString = toTest.getText().toString().matches("");
+        return isEmptyString;
     }
 }

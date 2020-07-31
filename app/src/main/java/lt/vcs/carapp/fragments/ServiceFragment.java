@@ -41,18 +41,14 @@ public class ServiceFragment extends Fragment {
         serviceTitle.setOnFocusChangeListener(new View.OnFocusChangeListener() {
             @Override
             public void onFocusChange(View v, boolean hasFocus) {
-                if (!hasFocus) {
-                    hideKeyboard(v);
-                }
+                if (!hasFocus) hideKeyboard(v);
             }
         });
 
         serviceCom.setOnFocusChangeListener(new View.OnFocusChangeListener() {
             @Override
             public void onFocusChange(View v, boolean hasFocus) {
-                if (!hasFocus) {
-                    hideKeyboard(v);
-                }
+                if (!hasFocus) hideKeyboard(v);
             }
         });
 
@@ -91,27 +87,24 @@ public class ServiceFragment extends Fragment {
     }
 
     private void setUpdateService() {
-        if (!serviceTitle.getText().toString().matches("")) {
+        if (!isEmptyString(serviceTitle) && !isEmptyString(serviceCom) && !isEmptyString(serviceDate)) {
             serviceTitle1 = serviceTitle.getText().toString();
-        }
-
-        if (!serviceCom.getText().toString().matches("")) {
             serviceCom1 = serviceCom.getText().toString();
-        }
-
-        if (!serviceDate.getText().toString().matches("")) {
             serviceDate1 = serviceDate.getText().toString();
-        }
 
-        if (!serviceTitle.getText().toString().matches("") && !serviceCom.getText().toString().matches("")
-                && !serviceDate.getText().toString().matches("")) {
             if (isNewService) {
                 databaseHandler.setService(serviceTitle1, serviceCom1, serviceDate1, idNew);
             } else {
                 databaseHandler.updateService(serviceTitle1, serviceCom1, serviceDate1, idUpdate);
             }
+
         } else {
             Toast.makeText(getActivity(), "Neišsaugota. Blogai įvesti duomenys.", Toast.LENGTH_LONG).show();
         }
+    }
+
+    public boolean isEmptyString(EditText toTest){
+        boolean isEmptyString = toTest.getText().toString().matches("");
+        return isEmptyString;
     }
 }

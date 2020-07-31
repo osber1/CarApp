@@ -234,27 +234,20 @@ public class InsuranceFragment extends Fragment {
         int period1 = 0;
         int price1 = 0;
 
-        if (!company.getText().toString().matches("")) {
+        if (!isEmptyString(company) && !isEmptyString(dateFrom) && !isEmptyString(period) && !isEmptyString(price)) {
             company1 = company.getText().toString();
-        }
-
-        if (!dateFrom.getText().toString().matches("")) {
             dateFrom1 = dateFrom.getText().toString();
             dateTo1 = dateTo.getText().toString();
-        }
-
-        if (!period.getText().toString().matches("")) {
             period1 = Integer.parseInt(period.getText().toString());
-        }
-
-        if (!price.getText().toString().matches("")) {
             price1 = Integer.parseInt(price.getText().toString());
-        }
-
-        if (!company.getText().toString().matches("") && !dateFrom.getText().toString().matches("") && period1 > 0 && price1 > 0) {
             databaseHandler.updateInsurance(company1, price1, period1, dateFrom1, dateTo1, id);
         } else {
             Toast.makeText(getActivity(), "Neišsaugota. Blogai įvesti duomenys.", Toast.LENGTH_LONG).show();
         }
+    }
+
+    public boolean isEmptyString(EditText toTest) {
+        boolean isEmptyString = toTest.getText().toString().matches("");
+        return isEmptyString;
     }
 }

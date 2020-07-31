@@ -269,22 +269,18 @@ public class MaintenanceFragment extends Fragment {
         String date1 = null;
         int mileage1 = 0;
 
-        if (!maintenanceCom.getText().toString().matches("")) {
+        if (!isEmptyString(maintenanceCom) && !isEmptyString(date) && !isEmptyString(mileage)) {
             maintenanceCom1 = maintenanceCom.getText().toString();
-        }
-
-        if (!date.getText().toString().matches("")) {
             date1 = date.getText().toString();
-        }
-
-        if (!mileage.getText().toString().matches("")) {
             mileage1 = Integer.parseInt(mileage.getText().toString());
-        }
-
-        if (!maintenanceCom.getText().toString().matches("") && !date.getText().toString().matches("")) {
             databaseHandler.updateMaintenance(maintenanceCom1, date1, mileage1, id, jobsSet);
         } else {
             Toast.makeText(getActivity(), "Neišsaugota. Blogai įvesti duomenys.", Toast.LENGTH_LONG).show();
         }
+    }
+
+    public boolean isEmptyString(EditText toTest) {
+        boolean isEmptyString = toTest.getText().toString().matches("");
+        return isEmptyString;
     }
 }

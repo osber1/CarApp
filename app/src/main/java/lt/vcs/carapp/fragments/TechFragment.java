@@ -130,15 +130,18 @@ public class TechFragment extends Fragment {
     private void updateTech(int id) {
         techLaikotarpis = 24;
 
-        if (!techNuo.getText().toString().matches("")) {
+        if (!isEmptyString(techNuo)) {
             techNuo1 = techNuo.getText().toString();
             techIki1 = techIki.getText().toString();
-        }
-
-        if (!techNuo.getText().toString().matches("")) {
             databaseHandler.updateTech(techNuo1, techIki1, techLaikotarpis, id);
         } else {
             Toast.makeText(getActivity(), "Neišsaugota. Blogai įvesti duomenys.", Toast.LENGTH_LONG).show();
         }
+
+    }
+
+    public boolean isEmptyString(EditText toTest) {
+        boolean isEmptyString = toTest.getText().toString().matches("");
+        return isEmptyString;
     }
 }

@@ -94,7 +94,6 @@ public class MainFragment extends Fragment {
                     maintenanceFragment.setArguments(bundle);
                     getFragmentManager().beginTransaction().replace(R.id.container_fragment, maintenanceFragment).addToBackStack(null).commit();
                 }
-
             }
         });
 

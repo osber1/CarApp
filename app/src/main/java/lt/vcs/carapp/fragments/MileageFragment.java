@@ -72,7 +72,7 @@ public class MileageFragment extends Fragment {
             image.getImage();
             Bitmap bitmap = BitmapFactory.decodeByteArray(image.getImage(), 0, image.getImage().length);
             imageView.setImageBitmap(bitmap);
-        } catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
         }
 
@@ -134,11 +134,11 @@ public class MileageFragment extends Fragment {
 
     private void updateMileage(int id) {
         int mileage1 = 0;
-        if (!mileage.getText().toString().matches("")) {
+        if (!isEmptyString(mileage)) {
             mileage1 = Integer.parseInt(mileage.getText().toString());
-        }
-        if (mileage1 > 0) {
-            databaseHandler.updateMileage(mileage1, id);
+            if (mileage1 > 0) {
+                databaseHandler.updateMileage(mileage1, id);
+            }
         } else {
             Toast.makeText(getActivity(), "Neišsaugota. Blogai įvesti duomenys.", Toast.LENGTH_LONG).show();
         }
@@ -147,5 +147,10 @@ public class MileageFragment extends Fragment {
     public void hideKeyboard(View view) {
         InputMethodManager inputMethodManager = (InputMethodManager) getActivity().getSystemService(Activity.INPUT_METHOD_SERVICE);
         inputMethodManager.hideSoftInputFromWindow(view.getWindowToken(), 0);
+    }
+
+    public boolean isEmptyString(EditText toTest) {
+        boolean isEmptyString = toTest.getText().toString().matches("");
+        return isEmptyString;
     }
 }
